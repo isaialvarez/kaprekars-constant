@@ -1,19 +1,33 @@
 package main
 
 import (
+	"bufio"
+	"fmt"
 	"log"
 	"math"
+	"os"
 	"slices"
+	"strconv"
 )
 
 func main() {
-	var number = 2111
+	fmt.Println("Enter number:")
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	text := scanner.Text()
+
+	number, err := strconv.Atoi(text)
+	if err != nil {
+		fmt.Println("input is not a number")
+		return
+	}
 
 	if number < 100 {
 		log.Println("Value must be greater that 99")
 		return
 	}
 
+	fmt.Println("Steps:")
 	for i := 0; i < 7; i++ {
 		array := int2array(number)
 
@@ -27,12 +41,12 @@ func main() {
 		intLargest := array2Int(largest)
 
 		if intSmallest == intLargest {
-
+			intLargest *= 10
 		}
 
 		number = intLargest - intSmallest
 
-		log.Println("Array:", array, "Smallest:", smallest, intSmallest, "Largest:", largest, intLargest, "newNumber", number)
+		log.Println(intLargest, "-", intSmallest, "=", number)
 
 		if number == 6174 || number == 495 {
 			break

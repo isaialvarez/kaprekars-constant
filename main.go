@@ -22,12 +22,17 @@ func main() {
 		return
 	}
 
-	if number < 100 {
-		log.Println("Value must be greater that 99")
-		return
+	generateConstant(number)
+}
+
+func generateConstant(number int) int {
+	if number < 100 || number > 9998 {
+		log.Println("Value must be between 100 and 9998")
+		return 0
 	}
 
 	fmt.Println("Steps:")
+	constant := 0
 	for i := 0; i < 7; i++ {
 		array := int2array(number)
 
@@ -48,10 +53,14 @@ func main() {
 
 		log.Println(intLargest, "-", intSmallest, "=", number)
 
+		constant = number
+
 		if number == 6174 || number == 495 {
 			break
 		}
 	}
+
+	return constant
 }
 
 func int2array(value int) []int {

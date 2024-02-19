@@ -39,3 +39,51 @@ func TestGenerateConstant(t *testing.T) {
 		assert.Equal(t, tCase.expected, actual)
 	}
 }
+
+func TestInt2Array(t *testing.T) {
+	testCases := []struct {
+		caseName string
+		input    int
+		expected []int
+	}{
+		{
+			caseName: "convert int 2 array",
+			input:    12345,
+			expected: []int{1, 2, 3, 4, 5},
+		},
+		{
+			caseName: "convert int 2 array",
+			input:    321,
+			expected: []int{3, 2, 1},
+		},
+	}
+
+	for _, tCase := range testCases {
+		actual := int2array(tCase.input)
+		assert.Equal(t, tCase.expected, actual)
+	}
+}
+
+func TestArray2Int(t *testing.T) {
+	testCases := []struct {
+		caseName string
+		input    []int
+		expected int
+	}{
+		{
+			caseName: "convert int 2 array",
+			input:    []int{1, 2, 3, 4, 5},
+			expected: 12345,
+		},
+		{
+			caseName: "convert int 2 array",
+			input:    []int{3, 2, 1},
+			expected: 321,
+		},
+	}
+
+	for _, tCase := range testCases {
+		actual := array2Int(tCase.input)
+		assert.Equal(t, tCase.expected, actual)
+	}
+}
